@@ -5,12 +5,16 @@
 
 
 # The following lines enable the apache rewriting for the api. You can use url like http://glpi/api/.
-#<IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 #   RewriteEngine On
 #   RewriteCond %{REQUEST_FILENAME} !-f
 #   RewriteCond %{REQUEST_FILENAME} !-d
 #   RewriteRule api/(.*)$ apirest.php/$1
-#</IfModule>
+  RewriteBase /
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
 
 
 # You can uncomment following lines to enable caching of web assets (pictures, javascript files, etc)
